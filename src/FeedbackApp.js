@@ -24,7 +24,7 @@
 const MAX_LENGTH = 80;
 
 module.exports = class FeedbackApp {
-  truncateText(string, stars) {
+  truncateText(string, stars = '') {
     const ellipses = '...';
     const substringLength = MAX_LENGTH - stars.length - ellipses.length;
     return string.substring(0, substringLength) + ellipses + stars;
@@ -55,11 +55,11 @@ module.exports = class FeedbackApp {
   }
 
   formatFeedback(feedback) {
-    const {word, comment, date, rating} = feedback;
+    const { word, comment, date, rating } = feedback;
 
     let formattedFeedback = word + ': ' + comment;
     let feedbackLength = formattedFeedback.length;
-    
+
     const formattedStars = this.formatStars(rating);
     const starsLength = formattedStars.length;
 
